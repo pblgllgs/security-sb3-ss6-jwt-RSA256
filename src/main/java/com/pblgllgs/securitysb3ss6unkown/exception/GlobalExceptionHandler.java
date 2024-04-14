@@ -32,14 +32,14 @@ public class GlobalExceptionHandler {
             SQLIntegrityConstraintViolationException e,
             HttpServletRequest request
     ) {
-        ErrorResponse ErrorResponse = new ErrorResponse(
+        ErrorResponse errorResponse = new ErrorResponse(
                 request.getRequestURI(),
                 e.getClass().getSimpleName(),
                 e.getMessage(),
                 HttpStatus.BAD_REQUEST.value(),
                 LocalDateTime.now()
         );
-        return new ResponseEntity<>(ErrorResponse, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
     }
 
 }

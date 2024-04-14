@@ -6,7 +6,6 @@ import com.pblgllgs.securitysb3ss6unkown.model.entity.Role;
 import com.pblgllgs.securitysb3ss6unkown.repository.RoleRepository;
 import com.pblgllgs.securitysb3ss6unkown.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.apache.catalina.User;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -49,13 +48,13 @@ public class AuthenticationService {
                     new UsernamePasswordAuthenticationToken(username, password)
             );
             String token = tokenService.generateJwt(authentication);
-            Optional<ApplicationUser> user= userRepository.findByUsername(username);
-            if (user.isEmpty()){
+            Optional<ApplicationUser> user = userRepository.findByUsername(username);
+            if (user.isEmpty()) {
                 throw new UsernameNotFoundException("User not found");
             }
-            return new LoginResponseDto(user.get(),token);
-        }catch (AuthenticationException e){
-            return new LoginResponseDto(null,"");
+            return new LoginResponseDto(user.get(), token);
+        } catch (AuthenticationException e) {
+            return new LoginResponseDto(null, "");
         }
     }
 }

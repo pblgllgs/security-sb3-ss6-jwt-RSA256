@@ -17,7 +17,6 @@ import java.util.stream.Collectors;
 public class TokenService {
 
     private final JwtEncoder jwtEncoder;
-    private final JwtDecoder jwtDecoder;
 
     public String generateJwt(Authentication authentication) {
         Instant now = Instant.now();

@@ -5,7 +5,7 @@ import java.security.KeyPairGenerator;
 
 public class KeyGeneratorUtility {
 
-    public static KeyPair generateRsaKey() throws Exception {
+    public static KeyPair generateRsaKey(){
         KeyPair keyPair;
 
         try {
